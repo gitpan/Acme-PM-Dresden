@@ -1,5 +1,3 @@
-=pod
-
 =head1 NAME
 
 Acme::PM:Dresden - A module for mostly educational purposes,
@@ -14,13 +12,18 @@ although with useful functionality.
 This project is an educational collecting tank for any functions
 and/or experiments we (the Dresden Perl Mongers) need a place for.
 
-Version 0.02, for instance, is an empty project, simply demonstrating
-the construction of a CPAN distribution. If you ever need a skeleton,
-Dresden version 0.02 is for you.
+Version 0.01, for instance, was an empty project, simply demonstrating
+the construction of a CPAN distribution.
 
-There are future plans, anyway, to make it a useful module, e.g., it
-will provide information about Dresden Perl Mongers, either in a static
-or dynamic network fashion based on info on our homepage.
+There are future plans, to make it a useful module, e.g., it will
+provide information about Dresden Perl Mongers, either in a static or
+dynamic network fashion based on info on our homepage.
+
+See the modules
+L<Acme::PM::Dresden::TWikiClient|Acme::PM::Dresden::TWikiClient>,
+L<Acme::PM::Dresden::VQWikiClient|Acme::PM::Dresden::VQWikiClient> and
+L<Acme::PM::Dresden::Convert::VQWiki2TWiki|Acme::PM::Dresden::Convert::VQWiki2TWiki>
+for first useful stuff.
 
 =head1 METHODS
 
@@ -35,8 +38,6 @@ Dresden Perl Mongers <http://dresden-pm.org>
 
 =head1 LICENSE
 
-  Copyright (c) 2005. Perl Mongers Dresden
-  All rights reserved.  You can redistribute and/or modify
-  this bundle under the same terms as Perl itself.
-
-=cut
+ Copyright (c) 2005. Perl Mongers Dresden
+ All rights reserved. You can redistribute and/or modify
+ this bundle under the same terms as Perl itself.

@@ -1,5 +1,7 @@
 Build.PL
 ChangeLog
+eg/append_to_twiki_topic.pl
+eg/migrate_vqwiki2twiki.pl
 INSTALL
 lib/Acme/PM/Dresden.pm
 lib/Acme/PM/Dresden.pod
@@ -7,6 +9,8 @@ lib/Acme/PM/Dresden/Convert/VQWiki2TWiki.pm
 lib/Acme/PM/Dresden/Convert/VQWiki2TWiki.pod
 lib/Acme/PM/Dresden/TWikiClient.pm
 lib/Acme/PM/Dresden/TWikiClient.pod
+lib/Acme/PM/Dresden/VQWikiClient.pm
+lib/Acme/PM/Dresden/VQWikiClient.pod
 LICENSE
 Makefile.PL
 MANIFEST			This list of files

@@ -1,6 +1,6 @@
 =head1 NAME
 
-Acme::PM::Dresden::Convert::VQWiki2TWiki - A module for converting foreign wiki syntax into into TWiki syntax.
+Acme::PM::Dresden::Convert::VQWiki2TWiki - Convert VQWiki syntax into TWiki syntax.
 
 =head1 SYNOPSIS
 
@@ -13,17 +13,26 @@ Acme::PM::Dresden::Convert::VQWiki2TWiki - A module for converting foreign wiki 
  $convert->vqwiki ($text);
  print $convert->twiki;
 
-=head1 AUTHOR
+ # or
+ my $convert = new Acme::PM::Dresden::Convert::VQWiki2TWiki;
+ print $convert->vqwiki2twiki ($text);
 
-Steffen Schwigon <schwigon@cpan.org>
+=head1 ABOUT
 
-=head1 LICENSE
+With this class you can convert raw VQWiki syntax into raw TWiki
+syntax.
 
-  Copyright (c) 2005. Steffen Schwigon
-  All rights reserved.  You can redistribute and/or modify
-  this bundle under the same terms as Perl itself.
+See L<http://veryquickwiki.croninsolutions.com/> for more information
+about VQWiki.
 
-=head1 Methods
+See L<http://twiki.org/> for more information about TWiki.
+
+It's just within the Acme namespace because it developed within
+Acme::PM::Dresden::*. It is by all means meant to be a useful module.
+
+See the example scripts in eg/ for more complex usage.
+
+=head1 METHODS
 
 =head2 init
 
@@ -38,7 +47,7 @@ derived classes, e.g., to set default values.
 
 =head2 post_init
 
-Called before Class::MethodMaker's C<hash_init>. Overload this in
+Called after Class::MethodMaker's C<hash_init>. Overload this in
 derived classes, e.g., to enforce values.
 
 =head2 twiki
@@ -50,7 +59,7 @@ with C<vqwiki>.
 
 Convert a given VQWiki text into TWiki text.
 
-=head1 Description of VQWiki syntax
+=head1 DESCRIPTION OF VQWIKI SYNTAX
 
 Cut'n'pasted from a vqwiki page:
 
@@ -58,7 +67,7 @@ Cut'n'pasted from a vqwiki page:
 
 Double apostrophes (not double quotes).
 
-    	For example: ''Text''
+ For example: ''Text''
 
 =head2 Bold
 
@@ -171,3 +180,12 @@ Surround code as follows:
 
  [<java>] mycode(); [</java>]
 
+=head1 AUTHOR
+
+Steffen Schwigon <schwigon@cpan.org>
+
+=head1 LICENSE
+
+ Copyright (c) 2005. Steffen Schwigon
+ All rights reserved. You can redistribute and/or modify
+ this bundle under the same terms as Perl itself.

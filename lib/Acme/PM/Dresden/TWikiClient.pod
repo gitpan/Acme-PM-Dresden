@@ -1,8 +1,6 @@
-=pod
-
 =head1 NAME
 
-Acme::PM::Dresden::TWikiClient - A WWW::Mechanize client to access a TWiki.
+Acme::PM::Dresden::TWikiClient - WWW::Mechanize-based client to access a TWiki.
 
 =head1 SYNOPSIS
 
@@ -25,15 +23,23 @@ Acme::PM::Dresden::TWikiClient - A WWW::Mechanize client to access a TWiki.
 
 =head1 ABOUT
 
-This class is derived from WWW::Mechanize and extended for easy remote
-controlling a TWiki based webseite.
+This class is derived from WWW::Mechanize for easy remote controlling
+a TWiki based webseite. It was developed to migrate from a VQWiki to
+TWiki.
+
+It's just within the Acme namespace because it developed within
+Acme::PM::Dresden::*. It is by all means meant to be a useful module.
 
 It was developed during the same time when WWW:Mechanize::TWiki
 version 0.06 was uploaded, so I didn't have a look at the new features
 there yet and don't want to throw away my class.
 
 I currently only tested it with TWikis using the I<PatternSkin>, e.g.,
-http://twiki.org.
+at L<http://twiki.org>.
+
+See L<http://twiki.org/> for more information about TWiki.
+
+See the example scripts in eg/ for more complex usage.
 
 =head1 METHODS
 
@@ -53,17 +59,18 @@ view.
 
 =head2 htmplparse_get_text
 
-Auxiliary function within C<htmlparse_extract_single_textarea>.
+Auxiliary function within L<htmlparse_extract_single_textarea|htmlparse_extract_single_textarea>.
 
 =head2 $url = $client->make_url ($cmd, $topic, $optional_tail);
 
-Auxiliary function. Constructs URL from C<bin_url>, $cmd (view, edit,
-...) and topic name. If topic name doesn't contain a web prefix (eg.,
-the "Main." in "Main.WebHome"), then C<current_default_web> is used.
+Auxiliary function. Constructs URL from class param C<bin_url>, $cmd
+(view, edit, ...) and topic name. If topic name doesn't contain a web
+prefix (eg., the "Main." in "Main.WebHome"), then the class param
+C<current_default_web> is used.
 
 =head2 new
 
-Constructor. Allows arguments:
+Constructor. Takes an argument hash:
 
 =over 4
 
@@ -146,7 +153,5 @@ Steffen Schwigon <schwigon@cpan.org>
 =head1 LICENSE
 
   Copyright (c) 2005. Steffen Schwigon
-  All rights reserved.  You can redistribute and/or modify
+  All rights reserved. You can redistribute and/or modify
   this bundle under the same terms as Perl itself.
-
-=cut

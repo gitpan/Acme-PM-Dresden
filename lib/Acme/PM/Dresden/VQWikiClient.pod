@@ -1,0 +1,151 @@
+=head1 NAME
+
+Acme::PM::Dresden::VQWikiClient - WWW::Mechanize-based client to access a VQWiki.
+
+=head1 SYNOPSIS
+
+ use Acme::PM::Dresden::VQWikiClient;
+ 
+ my $client = new Acme::PM::Dresden::VQWikiClient;
+ 
+ $client->auth_user           ("VQWikiUserName");
+ $client->auth_passwd         ("secretpasswd");
+ 
+ $client->bin_url             ('http://wiki.yourhost.de/vqwiki/jsp/Wiki');
+ $client->current_topic       ('TestZentrumFuerSammlerUndJaeger');
+
+ my $topic_content = $client->read_topic;
+ $client->save_topic ($topic_content . "\nVQWikiClient was here.\n")
+
+=head1 ABOUT
+
+This class is derived from WWW::Mechanize for remote controlling a
+VQWiki based webseite. It was developed to migrate from a VQWiki to
+TWiki.
+
+It's just within the Acme namespace because it developed within
+Acme::PM::Dresden::*. It is by all means meant to be a useful module.
+
+See also
+L<Acme::PM::Dresden::TWikiClient|Acme::PM::Dresden::TWikiClient> and
+L<Acme::PM::Dresden::Convert::VQWiki2TWiki|Acme::PM::Dresden::Convert::VQWiki2TWiki>.
+
+It should even work with basic authentication, although I didn't test
+it (it's derived from TWikiClient, where basic auth works).
+
+See L<http://veryquickwiki.croninsolutions.com/> for more information
+about VQWiki.
+
+See the example scripts in eg/ for more complex usage.
+
+=head1 METHODS
+
+=head2 edit_press_cancel
+
+Cancels a current topic edit.
+
+=head2 get_basic_credentials
+
+Overwritten function to provide username and password, that were set
+via C<auth_user> and C<auth_passwd>.
+
+=head2 htmlparse_extract_single_textarea
+
+Auxiliary function to extract the textarea from edit view.
+
+=head2 htmplparse_get_text
+
+Auxiliary function within C<htmlparse_extract_single_textarea>.
+
+=head2 $url = $client->make_action_url (action, $topic);
+
+Auxiliary function. Constructs URL from C<bin_url>, $cmd (edit,
+unlock, ...) and topic name. 
+
+=head2 new
+
+Constructor. Allows arguments:
+
+=over 4
+
+=item bin_url
+
+The base URL of the vqwiki,
+e.g. "http://wiki.webit.de/vqwiki/jsp/Wiki".
+
+=item current_topic
+
+The topic that is used if not given to functions. That makes it easier
+to set the topic and then call C<read_topic> and C<save_topic> with
+just content params.
+
+=item auth_user
+
+Set your VQWiki username here.
+
+=item auth_passwd
+
+Set your VQWiki password here.
+
+=back
+
+=head2 pre_init
+
+Called before params are taken over. I mostly use it for setting
+default values in derived clases.
+
+=head2 post_init
+
+Called after params are taken over. I mostly use it for forcing values
+(and ignoring params) in derived clases.
+
+=head2 my $rawcontent = read_topic ($optional_topic_name);
+
+Returns the raw topic content.
+
+Because VQWiki doesn't seem to have a raw text view, this method goes
+via the edit page of this topic, which can fail, if the topic is
+locked. In this cae C<undef> is returned.
+
+=head2 my $success = save_topic ($rawcontent, $optional_topic_name);
+
+Writes the string $rawcontent into the topic. Old content is
+overwritten, so if you just want to append, use C<read_topic> and
+concatenate.
+
+=head2 regex_error
+
+I sourced out some regexes that seem to be localisation dependend. If
+you have another skin or language, you should only need to subclass
+and overwrite the regex_* methods.
+
+This regex is for matching "error" page. It mostly happened due to
+locking.
+
+=head2 regex_save_user
+
+This regex is for matching the in-between page asking for a user name.
+
+=head2 value_cancel_button
+
+This string is the value of the Cancel button. 
+
+=head2 value_save_button
+
+This string is the value of the Save button. 
+
+=head2 handle_save_user
+
+This method handles the in-between page asking for a user name. It
+fills in the value of C<auth_user> and continues, hopefully at the
+originally wanted page.
+
+=head1 AUTHOR
+
+Steffen Schwigon <schwigon@cpan.org>
+
+=head1 LICENSE
+
+  Copyright (c) 2005. Steffen Schwigon
+  All rights reserved. You can redistribute and/or modify
+  this bundle under the same terms as Perl itself.

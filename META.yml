@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name: Acme-PM-Dresden
-version: 0.06
+version: 0.07
 author: ~
 abstract: ~
 license: perl
@@ -17,9 +17,11 @@ build_requires:
 provides:
   Acme::PM::Dresden:
     file: lib/Acme/PM/Dresden.pm
-    version: 0.06
+    version: 0.07
   Acme::PM::Dresden::Convert::VQWiki2TWiki:
     file: lib/Acme/PM/Dresden/Convert/VQWiki2TWiki.pm
   Acme::PM::Dresden::TWikiClient:
     file: lib/Acme/PM/Dresden/TWikiClient.pm
+  Acme::PM::Dresden::VQWikiClient:
+    file: lib/Acme/PM/Dresden/VQWikiClient.pm
 generated_by: Module::Build version 0.25

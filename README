@@ -1,37 +1,38 @@
 NAME
 
-  Dresden - A module for mostly educational purposes,
-            although with useful functionality.
+Dresden - A module for mostly educational purposes,
+          although with useful functionality.
 
 ABOUT
 
   This project is an educational collecting tank for any functions
   and/or experiments we (the Dresden Perl Mongers) need a place for.
 
-  Version 0.02, for instance, is an empty project, simply demonstrating
-  the construction of a CPAN distribution. If you ever need a skeleton,
-  Dresden version 0.02 is for you.
+  Version 0.01, for instance, was an empty project, simply
+  demonstrating the construction of a CPAN distribution.
 
-  There are future plans, anyway, to make it a useful module, e.g., it
-  will provide information about Dresden Perl Mongers, either in a static
+  There are future plans, to make it a useful module, e.g., it will
+  provide information about Dresden Perl Mongers, either in a static
   or dynamic network fashion based on info on our homepage.
+
+  See the modules
+    Acme::PM::Dresden::TWikiClient,
+    Acme::PM::Dresden::VQWikiClient
+    Acme::PM::Dresden::Convert::VQWiki2TWiki
+  for first useful stuff.
 
 SYNOPSIS
 
- use Dresden;
+ use Acme::PM::Dresden;
 
 AUTHOR
 
-  Dresden Perl Mongers
-  http://dresden-pm.org
-
-BUGS
-
-  Too simple?
+ Dresden Perl Mongers
+ http://dresden-pm.org
 
 COPYRIGHT AND LICENSE
 
-  Copyright (c) 2005 Dresden Perl Mongers
+ Copyright (c) 2005 Dresden Perl Mongers
 
-  All rights reserved.  You can redistribute and/or modify
-  this bundle under the same terms as Perl itself.
+ All rights reserved.  You can redistribute and/or modify
+ this bundle under the same terms as Perl itself.

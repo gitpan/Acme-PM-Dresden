@@ -1,4 +1,12 @@
-2005-02-24  Steffen Schwigon  <ss5@webit.de>
+2005-02-25  Steffen Schwigon  <schwigon@cpan.org>
+
+	* 0.07
+
+	* POD fixes
+
+	* Complete example script that migrates a VQWiki to TWiki
+
+2005-02-24  Steffen Schwigon  <schwigon@cpan.org>
 
 	* 0.06
 
