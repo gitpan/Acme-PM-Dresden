@@ -31,12 +31,13 @@ sub post_init {
 sub twiki {
   my $self = shift;
 
-  return vqwiki2twiki ($self->vqwiki)           if $self->vqwiki;
+  return $self->vqwiki2twiki ($self->vqwiki) if $self->vqwiki;
   return '';
 }
 
 sub vqwiki2twiki {
-  my $text        = shift;
+  my $self = shift;
+  my $text = shift;
 
   my $in_table    = 0;
   my $in_html     = 0;
@@ -79,6 +80,7 @@ sub vqwiki2twiki {
     # table content (evtl. erst NACH normaler Konvertierung?)
     if ($in_table) {
       $line =~ s/##/|/g;
+      $line =~ s/\@\@/ %BR% /g;
       $line = '| '.$line;
     }
     # end verbatim (start verbatim is recognized after other transformations)
@@ -92,28 +94,44 @@ sub vqwiki2twiki {
       $output .= "$line\n";
       next;
     }
-    # explicit linking
-    $line =~ s/\`([^\`]+)\`/\[\[$1\]\]/g;
+    # rewrite explicit linking to capitalized topics
+    while ($line =~ /\`([a-z][^\`]+?)\`/) {
+      my ($topic) = ($line =~ /\`([a-z][^\`]+?)\`/);
+      my $new_topic = $topic;
+      $new_topic =~ s/\b(\w)/\U$1/g; # capitalize
+      $line =~ s/\`$topic\`/\`$new_topic\`/;
+    }
+    # explicite linking
+    $line =~ s/\`([^\`]+?)\`/\[\[$1\]\]/g;
     # horizontal line
     $line =~ s/^-{4,}$/---/g;
     # h1
-    $line =~ s/^!{3}\s*([^!]+)!{3}/---+ $1\n/g;
+    $line =~ s/^!{3}\s*([^!]+?)!{3}/---+ $1\n/g;
     # h2
-    $line =~ s/^!{2}\s*([^!]+)!{2}/---++ $1\n/g;
+    $line =~ s/^!{2}\s*([^!]+?)!{2}/---++ $1\n/g;
     # h3
-    $line =~ s/^!{1}\s*([^!]+)!{1}/---+++ $1\n/g;
+    $line =~ s/^!{1}\s*([^!]+?)!{1}/---+++ $1\n/g;
     # center
-    $line =~ s/^\s*::\s*([^!]+)::\s$/\<center\>\n$1\n\<\/center\>\n/g;
+    $line =~ s/^\s*::\s*(.*)::\s*$/\<center\>$1\<\/center\>\n/g;
     # underline
-    $line =~ s/={3}([^']+)={3}/<u>$1<\/u>/gm;
+    $line =~ s/={3}([^']+?)={3}/<u>$1<\/u>/gm;
     # bold italics
-    $line =~ s/'{5}([^']+)'{5}/__$1__/gm;
+    $line =~ s/'{5}([^']+?)'{5}/__$1__/gm;
     # bold
-    $line =~ s/'{3}([^']+)'{3}/\*$1\*/gm;
+    $line =~ s/'{3}([^']+?)'{3}/\*$1\*/gm;
     # italics
-    $line =~ s/'{2}([^']+)'{2}/_$1_/gm;
+    $line =~ s/'{2}([^']+?)'{2}/_$1_/gm;
+    # quote html within =code=
+    while ($line =~ /\{\{\{.*<[^>]*>.*\}\}\}/) {
+      my ($inner) = ($line =~ /\{\{\{.*(<[^>]*?>).*\}\}\}/);
+      $inner =~ s/\</\&lt;/;
+      $inner =~ s/\>/\&gt;/;
+      $line =~ s/(\{\{\{.*)(<[^>]*>)(.*\}\}\})/$1$inner$3/;
+    }
     # code
-    $line =~ s/\{\{\{([^\`]+)\}\}\}/=$1=/gm;
+    $line =~ s/\{\{\{([^\`]+?)\}\}\}/=$1= /gm;
+    $line =~ s/=(.+?)=  /=$1= /gm; #
+    $line =~ s/= $/=/gm;
     # html
     $line =~ s/\[<\/?html>\]//gm;
     # java code
@@ -134,7 +152,7 @@ sub vqwiki2twiki {
     # start verbatim (after other transformations)
     if ($line =~ /\@\@\@\@/ and not $in_verbatim) {
       $in_verbatim = 1;
-      $line =~ s/\@\@\@\@/<verbatim>/g;
+      $line =~ s/\@\@\@\@/\n<verbatim>/g;
       $output .= "$line\n";
       next;
     }
@@ -143,13 +161,13 @@ sub vqwiki2twiki {
     # each original linebreak is new paragraph
     $output .= "$line\n";
     unless (
-               ($line =~ /^(   ){1,}\*/) # bulleted list item (already twiki syntax)
-            or ($line =~ /^(   ){1,}1/)  # numbered list item (already twiki syntax)
-            or $in_verbatim
-            or $in_table
-            or $in_html
-            or $in_java
-           ) {
+	    ($line =~ /^(   ){1,}\*/) # bulleted list item (already twiki syntax)
+	    or ($line =~ /^(   ){1,}1/)  # numbered list item (already twiki syntax)
+	    or $in_verbatim
+	    or $in_table
+	    or $in_html
+	    or $in_java
+	   ) {
       $output .= "\n";
     }
   }

@@ -16,6 +16,7 @@ use Class::MethodMaker
 	     'auth_user',
 	     'auth_passwd',
 	     'override_locks',
+	     'verbose',
             ],
  new_hash_init => 'hash_init'
  ;
@@ -32,6 +33,7 @@ sub new {
 sub pre_init {
   my $self   = shift;
   $self->override_locks (0);
+  $self->verbose (0);
 }
 
 sub post_init {
@@ -131,7 +133,7 @@ sub edit_press_cancel {
   my $self = shift;
 
   my $url = $self->make_url ('view', $self->current_topic, '?unlock=on');
-  print STDERR "edit_press_cancel: $url\n";
+  #print STDERR "edit_press_cancel: $url\n" if $self->verbose;
   $self->follow_link (url => $url);
 }
 
@@ -140,7 +142,7 @@ sub read_topic {
   my $self = shift;
   my $topic = shift || $self->current_topic;
   my $url = $self->make_url ('view', $topic, '?raw=on');
-  print STDERR "read_topic: $url\n";
+  #print STDERR "read_topic: $url\n" if $self->verbose;
   $self->get ($url);
   return $self->htmlparse_extract_single_textarea ($self->content);
 }
@@ -151,7 +153,7 @@ sub save_topic {
   my $topic = shift || $self->current_topic;
 
   my $url = $self->make_url ('edit', $topic);
-  print STDERR "save_topic: $url\n";
+  #print STDERR "save_topic: $url\n" if $self->verbose;
 
   # get page
   $self->get ($url);
@@ -164,11 +166,11 @@ sub save_topic {
       $self->follow_link (text_regex => $self->skin_regex_topic_locked_edit_anyway);
       $self->get ($url);
     } else {
-      print STDERR "Topic is locked.\n";
+      print STDERR "Topic is locked.\n" if $self->verbose;
       return undef;
     }
   } elsif ($html_content =~ $self->skin_regex_authentication_failed) {
-    print STDERR "Access denied. Authentication failed.\n";
+    print STDERR "Access denied. Authentication failed.\n" if $self->verbose;
     return undef;
   }
 

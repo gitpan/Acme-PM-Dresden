@@ -1,7 +1,7 @@
 ---+++ Kunden
 
-   * [[enviaM]]
-   * [[enviaTel]]
+   * [[EnviaM]]
+   * [[EnviaTel]]
    * [[Londa]]
    * [[SDV]]
    * [[SMS]]
@@ -55,7 +55,7 @@
 
 ---
 
-[[wiki]]
+[[Wiki]]
 
 _Italic_
 
@@ -67,7 +67,7 @@ __Bold Italic__
 
 <u>Underline</u>
 
-::Center::
+<center>Zentriert</center>
 
 ---+ Head1
 
@@ -99,6 +99,12 @@ Preformatted text 3
 Keep the empty line before this line
 
 ---
+
+Für tidy_path würde also =tidy -config /var/www/typo3/test/typo3conf/tidy.txt= vollkommen ausreichen (Standardeintrag: =tidy -i --quiet true --tidy-mark true -wrap 0= ), wenn in der bezeichneten Datei alle notwendigen Einstellungen vorgenommen werden.
+
+Wo also die =proc= -Funktionalität (Seiten-TSconfig) nicht mehr ausreicht, muss =parseFunc= aushelfen.
+
+In einer beispielhaften Struktur sind in der Zeile =&lt;vDEF&gt;210,212&lt;/vDEF&gt;= die "uids" der Elemente aufgelistet, die im Container "content" gerendert werden sollen.
 
 Now some <b><u>html formatted text</u></b> and some more<b><u>html</u></b> in one line.
 

@@ -1,3 +1,33 @@
+2005-02-24  Steffen Schwigon  <ss5@webit.de>
+
+	* 0.06
+
+	* verbose mode in TWikiClient and VQWikiClient
+
+	* Bugfixes in VQWiki2TWiki converter
+
+	* Bugfixes in TWikiClient and VQWikiClient
+
+	* VQWiki2TWiki: quote html within =code=
+
+	* VQWiki2TWiki: enforce a space after =code=
+
+	* VQWiki2TWiki: Capitalize topics and explicite links
+
+	* VQWiki2TWiki: Fixed linebreaks (@@ / %BR%) in tables
+
+	* VQWiki2TWiki: verbatim with less newlines
+
+	* VQWiki2TWiki: more non-greedy regexes
+
+	* VQWiki2TWiki: fixed nonworking centering
+
+2005-02-24  Steffen Schwigon  <schwigon@cpan.org>
+
+	* 0.05
+
+	* VQWikiClient
+
 2005-02-21  Steffen Schwigon  <schwigon@cpan.org>
 
 	* 0.04

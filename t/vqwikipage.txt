@@ -50,7 +50,7 @@
 '''''Bold Italic'''''
 {{{Code}}}
 ===Underline===
-::Center::
+::Zentriert::
 !!!Head1!!!
 !!Head2!!
 !Head3!
@@ -75,6 +75,9 @@ Preformatted text 3
 
 Keep the empty line before this line
 ----
+Für tidy_path würde also {{{tidy -config /var/www/typo3/test/typo3conf/tidy.txt}}} vollkommen ausreichen (Standardeintrag: {{{tidy -i --quiet true --tidy-mark true -wrap 0}}}), wenn in der bezeichneten Datei alle notwendigen Einstellungen vorgenommen werden.
+Wo also die {{{proc}}}-Funktionalität (Seiten-TSconfig) nicht mehr ausreicht, muss {{{parseFunc}}} aushelfen.
+In einer beispielhaften Struktur sind in der Zeile {{{<vDEF>210,212</vDEF>}}} die "uids" der Elemente aufgelistet, die im Container "content" gerendert werden sollen.
 Now some [<html>]<b><u>html formatted text</u></b>[</html>] and some more[<html>]<b><u>html</u></b>[</html>] in one line.
 And a new paragraph with [<html>] <b>stuff</b> and
 <b><u>html in more</u></b>
