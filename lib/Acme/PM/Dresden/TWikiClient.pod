@@ -1,0 +1,152 @@
+=pod
+
+=head1 NAME
+
+Acme::PM::Dresden::TWikiClient - A WWW::Mechanize client to access a TWiki.
+
+=head1 SYNOPSIS
+
+ use Acme::PM::Dresden::TWikiClient;
+ 
+ my $client = new Acme::PM::Dresden::TWikiClient;
+ 
+ $client->auth_user           ("TWikiUserName");
+ $client->auth_passwd         ("secretpasswd");
+ $client->override_locks      (0);  # default 0,
+                                    # set to 1 if locked topics
+                                    # should be "edited anyway"
+ 
+ $client->bin_url             ('http://twiki.org/cgi-bin/');
+ $client->current_default_web ('Sandbox'); # used if not contained in topic
+ $client->current_topic       ('SandBox32');
+
+ my $topic_content = $client->read_topic;
+ $client->save_topic ($topic_content . "\n\n*TWikiClient was here.*\n\n");
+
+=head1 ABOUT
+
+This class is derived from WWW::Mechanize and extended for easy remote
+controlling a TWiki based webseite.
+
+It was developed during the same time when WWW:Mechanize::TWiki
+version 0.06 was uploaded, so I didn't have a look at the new features
+there yet and don't want to throw away my class.
+
+I currently only tested it with TWikis using the I<PatternSkin>, e.g.,
+http://twiki.org.
+
+=head1 METHODS
+
+=head2 edit_press_cancel
+
+Cancels a current topic edit.
+
+=head2 get_basic_credentials
+
+Overwritten function to provide username and password, that were set
+via C<auth_user> and C<auth_passwd>.
+
+=head2 htmlparse_extract_single_textarea
+
+Auxiliary function to extract the nameless textarea in "raw text"
+view.
+
+=head2 htmplparse_get_text
+
+Auxiliary function within C<htmlparse_extract_single_textarea>.
+
+=head2 $url = $client->make_url ($cmd, $topic, $optional_tail);
+
+Auxiliary function. Constructs URL from C<bin_url>, $cmd (view, edit,
+...) and topic name. If topic name doesn't contain a web prefix (eg.,
+the "Main." in "Main.WebHome"), then C<current_default_web> is used.
+
+=head2 new
+
+Constructor. Allows arguments:
+
+=over 4
+
+=item bin_url
+
+The base URL, where the twiki binaries are reached,
+e.g. "http://twiki.org/cgi-bin/". 
+
+=item current_default_web
+
+The web that is used if topics are given without web prefix.  Compare
+"Main.WebHome" vs. "WebHome"; set current_default_web("Main") for the
+latter case.
+
+=item current_topic
+
+The topic that is used if not given to functions. That makes it easier
+to set the topic and then call C<read_topic> and C<save_topic> with
+just content params.
+
+=item auth_user
+
+Set your TWiki username here.
+
+=item auth_passwd
+
+Set your TWiki password here.
+
+=item override_locks
+
+If the topic is locked during C<save_topic>, this option decides
+whether the TWiki link "Edit anyway" is used and the lock is ignored.
+
+Please note, that a lock means, that another user edits the topic just
+in this moment and his later save will throw away your changes.
+
+=back
+
+=head2 pre_init
+
+Called before params are taken over. I mostly use it for setting
+default values in derived clases.
+
+=head2 post_init
+
+Called after params are taken over. I mostly use it for forcing values
+(and ignoring params) in derived clases.
+
+=head2 my $rawcontent = read_topic ($optional_topic_name);
+
+Returns the raw topic content.
+
+=head2 my $success = save_topic ($rawcontent, $optional_topic_name);
+
+Writes the string $rawcontent into the topic. Old content is
+overwritten, so if you just want to append, use C<read_topic> and
+concatenate.
+
+=head2 skin_regex_authentication_failed
+
+I sourced out some regexes that might be skin dependend. If you have
+another skin, you should only need to subclass and overwrite the
+skin_* methods.
+
+This regex is for matching "authentication failed" page.
+
+=head2 skin_regex_topic_locked
+
+This regex is for matching "topic locked" page.
+
+=head2 skin_regex_topic_locked_edit_anyway
+
+This regex is for finding the "Edit anyway" link in the "topic locked"
+page.
+
+=head1 AUTHOR
+
+Steffen Schwigon <schwigon@cpan.org>
+
+=head1 LICENSE
+
+  Copyright (c) 2005. Steffen Schwigon
+  All rights reserved.  You can redistribute and/or modify
+  this bundle under the same terms as Perl itself.
+
+=cut

@@ -1,0 +1,25 @@
+--- #YAML:1.0
+name: Acme-PM-Dresden
+version: 0.05
+author: ~
+abstract: ~
+license: perl
+requires:
+  Class::MethodMaker: 0
+  WWW::Mechanize: 0
+  XML::Simple: 0
+  perl: 5.6.1
+build_requires:
+  Test::Distribution: 0
+  Test::More: 0
+  Test::Pod::Coverage: 0
+  Text::Diff: 0
+provides:
+  Acme::PM::Dresden:
+    file: lib/Acme/PM/Dresden.pm
+    version: 0.05
+  Acme::PM::Dresden::Convert::VQWiki2TWiki:
+    file: lib/Acme/PM/Dresden/Convert/VQWiki2TWiki.pm
+  Acme::PM::Dresden::TWikiClient:
+    file: lib/Acme/PM/Dresden/TWikiClient.pm
+generated_by: Module::Build version 0.25

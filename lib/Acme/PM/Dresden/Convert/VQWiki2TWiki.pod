@@ -1,0 +1,173 @@
+=head1 NAME
+
+Acme::PM::Dresden::Convert::VQWiki2TWiki - A module for converting foreign wiki syntax into into TWiki syntax.
+
+=head1 SYNOPSIS
+
+ use Acme::PM::Dresden::Convert::VQWiki2TWiki;
+ my $convert = new Acme::PM::Dresden::Convert::VQWiki2TWiki (vqwiki => $text);
+ print $convert->twiki;
+
+ # or
+ my $convert = new Acme::PM::Dresden::Convert::VQWiki2TWiki;
+ $convert->vqwiki ($text);
+ print $convert->twiki;
+
+=head1 AUTHOR
+
+Steffen Schwigon <schwigon@cpan.org>
+
+=head1 LICENSE
+
+  Copyright (c) 2005. Steffen Schwigon
+  All rights reserved.  You can redistribute and/or modify
+  this bundle under the same terms as Perl itself.
+
+=head1 Methods
+
+=head2 init
+
+Calls some functions you can overload in derived classes to execute
+code before and after Class::MethodMaker's C<hash_init> (C<pre_init>
+and C<post_init>, respectively).
+
+=head2 pre_init
+
+Called before Class::MethodMaker's C<hash_init>. Overload this in
+derived classes, e.g., to set default values.
+
+=head2 post_init
+
+Called before Class::MethodMaker's C<hash_init>. Overload this in
+derived classes, e.g., to enforce values.
+
+=head2 twiki
+
+Returns the TWiki text that results from converting the text given
+with C<vqwiki>.
+
+=head2 vqwiki2twiki ($vqwikitext)
+
+Convert a given VQWiki text into TWiki text.
+
+=head1 Description of VQWiki syntax
+
+Cut'n'pasted from a vqwiki page:
+
+=head2 Italic
+
+Double apostrophes (not double quotes).
+
+    	For example: ''Text''
+
+=head2 Bold
+
+Triple Apostrophes.
+For example:
+
+ '''Text'''
+
+
+=head2 Bold Italic
+
+Triple + Double Apostrophes (5 apostrophes each side).
+For example:
+
+ '''''Text'''''
+
+=head2 Code
+
+Three braces each side.
+For example:
+
+ {{{Text}}}
+
+=head2 Underline
+
+Triple equal sign.
+For example:
+
+ ===Text===
+
+=head2 Center
+
+Double colons.
+For example:
+
+ ::Text::
+
+=head2 Headlines
+
+Very important text / Headline level 1.
+Start with three exclamation marks !!!; end with !!! or line break.
+
+Important text / Headline level 2.
+Start with two exclamation marks !!; end with !! or line break.
+
+Noticeable text / Headline level 3.
+Start with one exclamation mark !; end with ! or line break.
+
+=head2 Lists
+
+Bulleted List.
+
+ 3 spaces followed by a *
+
+Numbered List.
+
+ 3 spaces followed by a #
+
+Line Break.
+
+ @@
+
+=head2 Horizontal Rules
+
+Use four consecutive dashes, i.e.
+
+ ----
+
+=head2 Links or references
+
+Camel-cased word
+
+ ThisIsANewTopic
+
+Word surrounded by back-ticks
+
+ `Topic`
+
+=head2 Tables
+
+Start a table with four hashes by themselves.
+End each cell (including the last one on each row) with two hashes.
+End the table with four hashes by themselves again.
+
+  ####
+  0,0##0,1##
+  1,0##1,1##
+  ####
+
+=head2 Preformatted text
+
+Start a section of pre-formatted text with four '@'s by themselves.
+End with a blank line.
+
+  Some text
+  @@@@
+  Preformatted text
+  
+  Back to normal text
+
+=head2 Plain HTML (output as entered)
+
+Surround code as follows:
+
+ [<html>] <!--some html--> [</html>]
+
+=head2 Java source code
+
+Surround code as follows:
+
+ [<java>] mycode(); [</java>]
+

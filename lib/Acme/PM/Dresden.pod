@@ -1,0 +1,42 @@
+=pod
+
+=head1 NAME
+
+Acme::PM:Dresden - A module for mostly educational purposes,
+although with useful functionality.
+
+=head1 SYNOPSIS
+
+ use Acme::PM::Dresden;
+
+=head1 ABOUT
+
+This project is an educational collecting tank for any functions
+and/or experiments we (the Dresden Perl Mongers) need a place for.
+
+Version 0.02, for instance, is an empty project, simply demonstrating
+the construction of a CPAN distribution. If you ever need a skeleton,
+Dresden version 0.02 is for you.
+
+There are future plans, anyway, to make it a useful module, e.g., it
+will provide information about Dresden Perl Mongers, either in a static
+or dynamic network fashion based on info on our homepage.
+
+=head1 METHODS
+
+=head2 hello
+
+Just returns a string that you can print out.
+It does not do the C<print> itself.
+
+=head1 AUTHOR
+
+Dresden Perl Mongers <http://dresden-pm.org>
+
+=head1 LICENSE
+
+  Copyright (c) 2005. Perl Mongers Dresden
+  All rights reserved.  You can redistribute and/or modify
+  this bundle under the same terms as Perl itself.
+
+=cut

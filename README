@@ -1,0 +1,37 @@
+NAME
+
+  Dresden - A module for mostly educational purposes,
+            although with useful functionality.
+
+ABOUT
+
+  This project is an educational collecting tank for any functions
+  and/or experiments we (the Dresden Perl Mongers) need a place for.
+
+  Version 0.02, for instance, is an empty project, simply demonstrating
+  the construction of a CPAN distribution. If you ever need a skeleton,
+  Dresden version 0.02 is for you.
+
+  There are future plans, anyway, to make it a useful module, e.g., it
+  will provide information about Dresden Perl Mongers, either in a static
+  or dynamic network fashion based on info on our homepage.
+
+SYNOPSIS
+
+ use Dresden;
+
+AUTHOR
+
+  Dresden Perl Mongers
+  http://dresden-pm.org
+
+BUGS
+
+  Too simple?
+
+COPYRIGHT AND LICENSE
+
+  Copyright (c) 2005 Dresden Perl Mongers
+
+  All rights reserved.  You can redistribute and/or modify
+  this bundle under the same terms as Perl itself.
