@@ -1,3 +1,23 @@
+2005-05-29  Steffen Schwigon  <schwigon@cpan.org>
+
+	* 0.08
+
+	* TWikiClient: save_topic didn't work with some skins, as reported
+	by Aleksander Adamowski. Now there's better save_topic handling,
+	hopefully skin independent.
+
+	* TWikiClient: "Release edit lock" handling
+
+	* TWikiClient: more correct regexes for orientation in pages
+
+	* TWikiClient: renamed auxiliary (i.e., non-API)
+	methodnames to _methodname()
+	
+	* TWikiClient: extended and fixed documentation
+
+	* Acme::PM::Dresden::Acme::Framify: class for drawing frames
+	around words
+	
 2005-02-25  Steffen Schwigon  <schwigon@cpan.org>
 
 	* 0.07

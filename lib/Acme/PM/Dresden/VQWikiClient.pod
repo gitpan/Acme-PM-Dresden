@@ -20,7 +20,7 @@ Acme::PM::Dresden::VQWikiClient - WWW::Mechanize-based client to access a VQWiki
 =head1 ABOUT
 
 This class is derived from WWW::Mechanize for remote controlling a
-VQWiki based webseite. It was developed to migrate from a VQWiki to
+VQWiki based website. It was developed to migrate from a VQWiki to
 TWiki.
 
 It's just within the Acme namespace because it developed within

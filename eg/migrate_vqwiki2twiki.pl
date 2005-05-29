@@ -91,10 +91,10 @@ $twiki->current_default_web ('Ourweb'); # the target web in twiki
 
 # correct artifacts
 #
-# In case you know of syntax arteficts, the converter doesn't handle
+# In case you know of syntax artifacts that the converter doesn't handle
 # (or at least not correctly), you should preprocess them here.
 #
-# E.g., in our twiki, someone started a numbered item list immediately
+# E.g., in our vqwiki, someone started a numbered item list immediately
 # after a linebreak symbol '@@' with "<tab>#list item", instead of
 # starting a new line for that first list item.
 sub preprocess {

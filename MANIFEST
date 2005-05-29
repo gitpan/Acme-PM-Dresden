@@ -5,6 +5,8 @@ eg/migrate_vqwiki2twiki.pl
 INSTALL
 lib/Acme/PM/Dresden.pm
 lib/Acme/PM/Dresden.pod
+lib/Acme/PM/Dresden/Acme/Framify.pm
+lib/Acme/PM/Dresden/Acme/Framify.pod
 lib/Acme/PM/Dresden/Convert/VQWiki2TWiki.pm
 lib/Acme/PM/Dresden/Convert/VQWiki2TWiki.pod
 lib/Acme/PM/Dresden/TWikiClient.pm
@@ -19,6 +21,7 @@ README
 t/convert_twiki.t
 t/distribution.t
 t/dresden.t
+t/framify.t
 t/get_next_meeting_date.t
 t/pod-coverage.t
 t/README

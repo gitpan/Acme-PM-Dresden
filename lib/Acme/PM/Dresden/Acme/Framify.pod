@@ -1,0 +1,28 @@
+=head1 NAME
+
+Acme::PM:Dresden::Acme::Framify - A module for mostly educational purposes,
+although with useful functionality.
+
+=head1 SYNOPSIS
+
+ use Acme::PM::Dresden::Acme::Framify;
+
+=head1 ABOUT
+
+Takes a string and creates ascii frames around all words.
+
+=head1 METHODS
+
+=head2 $frameified = framify ($str);
+
+Returns a framified string that you can print out.
+
+=head1 AUTHOR
+
+Thomas Washeim
+
+=head1 LICENSE
+
+ Copyright (c) 2005. Dresden Perl Mongers
+ All rights reserved. You can redistribute and/or modify
+ this bundle under the same terms as Perl itself.
