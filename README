@@ -16,19 +16,24 @@ ABOUT
   or dynamic network fashion based on info on our homepage.
 
   See the modules
+
     Acme::PM::Dresden::TWikiClient,
     Acme::PM::Dresden::VQWikiClient
     Acme::PM::Dresden::Convert::VQWiki2TWiki
+
   for first useful stuff.
+
 
 SYNOPSIS
 
  use Acme::PM::Dresden;
 
+
 AUTHOR
 
  Dresden Perl Mongers
  http://dresden-pm.org
+
 
 COPYRIGHT AND LICENSE
 

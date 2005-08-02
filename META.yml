@@ -1,6 +1,6 @@
 ---
 name: Acme-PM-Dresden
-version: 0.08
+version: 0.09
 author:
   - ~
 abstract: ~
@@ -18,7 +18,7 @@ build_requires:
 provides:
   Acme::PM::Dresden:
     file: lib/Acme/PM/Dresden.pm
-    version: 0.08
+    version: 0.09
   Acme::PM::Dresden::Acme::Framify:
     file: lib/Acme/PM/Dresden/Acme/Framify.pm
     version: 0.01

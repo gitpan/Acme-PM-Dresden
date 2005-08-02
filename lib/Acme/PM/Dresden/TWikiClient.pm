@@ -193,6 +193,36 @@ sub save_topic {
   return 1;
 }
 
+sub attach_to_topic {
+  my $self           = shift;
+  my $local_filename = shift;
+  my $comment        = shift;
+  my $create_link    = shift;
+  my $hide_file      = shift;
+  my $topic          = shift || $self->current_topic;
+
+  my $url = $self->_make_url ('attach', $topic);
+  print STDERR "attach_to_topic url: $url\n" if $self->verbose;
+
+  # get page
+  $self->get ($url);
+
+  # fill form
+  $self->form_number (1);
+  $self->current_form;
+
+  $self->set_fields
+   (
+    filepath    => $local_filename,
+    filecomment => $comment,
+   );
+  $self->tick ('createlink', 'on') if $create_link;
+  $self->tick ('hidefile', 'on')   if $hide_file;
+
+  $self->submit();
+  return;
+}
+
 sub _save_topic_handle_locks {
   my $self  = shift;
   my $url   = shift;
