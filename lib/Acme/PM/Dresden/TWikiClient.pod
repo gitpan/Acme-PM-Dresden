@@ -1,6 +1,13 @@
 =head1 NAME
 
-Acme::PM::Dresden::TWikiClient - WWW::Mechanize-based client to access a TWiki.
+Acme::PM::Dresden::TWikiClient - WWW::Mechanize-based client to access a TWiki (deprecated - use WWW::TWikiClient)
+
+
+=head1 DEPRECATED
+
+Please note that Acme::PM::Dresden::TWikiClient is now deprecated. Use
+the outsourced L<WWW::TWikiClient|WWW::TWikiClient> instead.
+
 
 =head1 SYNOPSIS
 

@@ -129,12 +129,14 @@ sub htmlparse_extract_single_textarea {
     if ($t->[0] eq "form") {
       shift @$t;
       while (defined(my $t = $p->get_token)) {
-	next unless ref $t;  # skip text
-	last if $t->[0] eq "/form";
-	if ($t->[0] eq "textarea") {
-	  return $self->_htmplparse_get_text ($p, "/textarea");
-	}
+        next unless ref $t;  # skip text
+        last if $t->[0] eq "/form";
+        if ($t->[0] eq "textarea") {
+          return $self->_htmplparse_get_text ($p, "/textarea");
+        }
       }
+    } elsif ($t->[0] eq "textarea") {
+      return $self->_htmplparse_get_text ($p, "/textarea");
     }
   }
   return undef;

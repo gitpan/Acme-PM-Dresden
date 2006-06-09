@@ -1,8 +1,7 @@
 ---
 name: Acme-PM-Dresden
-version: 0.09
-author:
-  - ~
+version: 0.10
+author: ~
 abstract: ~
 license: perl
 requires:
@@ -11,14 +10,12 @@ requires:
   XML::Simple: 0
   perl: 5.6.1
 build_requires:
-  Test::Distribution: 0
   Test::More: 0
-  Test::Pod::Coverage: 0
   Text::Diff: 0
 provides:
   Acme::PM::Dresden:
     file: lib/Acme/PM/Dresden.pm
-    version: 0.09
+    version: 0.10
   Acme::PM::Dresden::Acme::Framify:
     file: lib/Acme/PM/Dresden/Acme/Framify.pm
     version: 0.01
@@ -28,4 +25,4 @@ provides:
     file: lib/Acme/PM/Dresden/TWikiClient.pm
   Acme::PM::Dresden::VQWikiClient:
     file: lib/Acme/PM/Dresden/VQWikiClient.pm
-generated_by: Module::Build version 0.23
+generated_by: Module::Build version 0.2611

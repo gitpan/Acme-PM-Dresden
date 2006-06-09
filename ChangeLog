@@ -1,3 +1,22 @@
+2006-06-09  Steffen Schwigon  <schwigon@cpan.org>
+
+	* 0.10
+
+	* TWikiClient: read_topic() bugfix for TWiki 4.0.2:
+	The new TWiki version has a different topic raw view mode: the
+	TEXTAREA isn't inside a FORM. Because of this, read_topic() always
+	returns empty content. Problem fixed with patch while maintaining
+	backwards compatibility (I suppose, but I couldn't test it on
+	older TWiki installations). Reported by Aleksander Adamowski.
+	
+	* TWikiClient: Please note that Acme::PM::Dresden::TWikiClient is
+	now deprecated. Use the outsourced WWW::TWikiClient instead.
+
+	* documentation regarding the outsourcing of TWikiClient.
+
+	* Dependencies to Test::Distribution and Test::Pod::Coverage
+	relaxed.
+	
 2005-07-31  Steffen Schwigon  <schwigon@cpan.org>
 
 	* 0.09

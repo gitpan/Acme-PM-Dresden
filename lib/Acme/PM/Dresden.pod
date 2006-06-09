@@ -15,9 +15,8 @@ and/or experiments we (the Dresden Perl Mongers) need a place for.
 Version 0.01, for instance, was an empty project, simply demonstrating
 the construction of a CPAN distribution.
 
-There are future plans, to make it a useful module, e.g., it will
-provide information about Dresden Perl Mongers, either in a static or
-dynamic network fashion based on info on our homepage.
+Sometimes a useful module starts his live here as happened with
+TWikiClient.
 
 See the modules
 L<Acme::PM::Dresden::TWikiClient|Acme::PM::Dresden::TWikiClient>,
